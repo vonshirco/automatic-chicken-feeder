@@ -44,5 +44,21 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  lcd.setCursor(0,0);
+  int buttonPress;
+  buttonPress = digitalRead(A3);
+  
+  if (buttonPress == 1)
+    setFeedingTime();
+    lcd.print("Time: ");
+    String t = "";
+  
+  t = trc.getTimerStr();
+  t1 = t.charAt(0)-48;
+  t2 = t.charAt(1)-48;
+  t3 = t.charAt(3)-48;
+  t4 = t.charAt(4)-48;
+  t5 = t.charAt(6)-48;
+  t6 = t.charAt(7)-48;
+  
 }
