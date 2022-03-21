@@ -16,6 +16,15 @@ char keys[ROWS][COLS] = {
 byte rowPins[ROWS] = { 2, 3, 4, 5};
 byte colPins[COLS] = { 6, 7, 8, 9};
 
+//Creating the keypad 
+Keypad kpd = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+
+//Assigning A4 and A5 Arduino pins to connect with SCL and SDA pins of DS3231.
+DS3231 rtc(A4, A5);
+Servo servo_test; //Initialize a servo object for the connected servo
+LiquidCrystal lcd(A0, A1, A2, 11, 12, 13); //Creates an LC object. Parameters: (rs, enable, d4, d5, d6, d7)
+
+
 void setup() {
   // put your setup code here, to run once:
 
