@@ -6,6 +6,9 @@
 #include <LiquidCrystal.h> //For 16*2 LCD
 #include <Keypad.h> //For 4*4 Matrix Keypad
 
+const byte ROWS = 4; //Four rows
+const byte COLS = 4; //Three columns
+
 //Defining the keymap for the 4*4 matrix keypad and assigning the Arduino pins for the Row and Columns of keypad.
 char keys[ROWS][COLS] = {
   {'1','2','3','A'},
@@ -13,8 +16,8 @@ char keys[ROWS][COLS] = {
   {'7','8','9','C'},
   {'*','0','#','D'}
 };
-byte rowPins[ROWS] = { 2, 3, 4, 5};
-byte colPins[COLS] = { 6, 7, 8, 9};
+byte rowPins[ROWS] = { 2, 3, 4, 5}; // Connect keypad ROW0, ROW1, ROW2 and ROW3 to these Arduino pins
+byte colPins[COLS] = { 6, 7, 8, 9}; // Connect keypad COL0, COL1 and COL2 to these Arduino pins
 
 //Creating the keypad 
 Keypad kpd = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS);
@@ -25,8 +28,10 @@ Servo servo_test; //Initialize a servo object for the connected servo
 LiquidCrystal lcd(A0, A1, A2, 11, 12, 13); //Creates an LC object. Parameters: (rs, enable, d4, d5, d6, d7)
 
 //Declaring the t1 to t6, key, and array r[6], and the feed
+int angle = 0;
+int potentio = A0; // initialize the A0analog pin for potentiometer
 int t1, t2, t3, t4, t5, t6;
-boolean feed = true;
+boolean feed = true; // condition for alarm
   char key;
   int r[6];
 
@@ -50,6 +55,8 @@ void loop() {
   
   if (buttonPress == 1)
     setFeedingTime();
+    //Serial.println(buttonPress);
+
     lcd.print("Time: ");
     String t = "";
   
@@ -89,6 +96,7 @@ void setFeedinTime() {
   lcd.clear();
   lcd.print("HH:MM");
   lcd.setCursor(0,1);
+  
   while(1){
     key = kpd.getKey();
     char j;
