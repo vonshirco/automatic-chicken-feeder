@@ -24,10 +24,22 @@ DS3231 rtc(A4, A5);
 Servo servo_test; //Initialize a servo object for the connected servo
 LiquidCrystal lcd(A0, A1, A2, 11, 12, 13); //Creates an LC object. Parameters: (rs, enable, d4, d5, d6, d7)
 
+//Declaring the t1 to t6, key, and array r[6], and the feed
+int t1, t2, t3, t4, t5, t6;
+boolean feed = true;
+  char key;
+  int r[6];
 
 void setup() {
   // put your setup code here, to run once:
-
+  servo_test.attach(10); //Attach the signal pin of servo to pin9 of arduino
+  rtc.begin();
+  lcd.begin(16,2);
+  servo_test.write(55);
+  Serial.begin(9600);
+  pinMode(A0, OUTPUT);
+  pinMode(A1, OUTPUT);
+  pinMode(A2, OUTPUT);
 }
 
 void loop() {
