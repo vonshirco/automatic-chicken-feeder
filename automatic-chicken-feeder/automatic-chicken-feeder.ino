@@ -74,3 +74,46 @@ void loop() {
   }
   
 }
+
+/*In this function code, After pressing the pushbutton we are able to
+enter the pet feeding time, then we have to Press ‘D’ to save that time. When the saved time 
+matches with real time then servo start rotating.*/
+
+void setFeedinTime() {
+  feed = true;
+  int i=0;
+  
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Set Feeding Time");
+  lcd.clear();
+  lcd.print("HH:MM");
+  lcd.setCursor(0,1);
+  while(1){
+    key = kpd.getKey();
+    char j;
+    
+  if (key != NO_KEY){
+    lcd.setCursor(j,1);
+    lcd.print(key);
+    r[i] = key-48;
+    i++;
+    j++;
+    
+    if (j==2){
+      lcd.print(":");
+      j++;
+    }
+    delay(500);
+  }
+  
+ if (key == 'D'){
+   key = 0;
+   break;
+ }
+  
+}
+
+
+
+
