@@ -61,4 +61,10 @@ void loop() {
   t5 = t.charAt(6)-48;
   t6 = t.charAt(7)-48;
   
+  lcd.print(rtc.getTimerStr());
+  lcd.setCursor(0,1);
+  lcd.print("Date: ");
+  lcd.print(rtc.getDateStr());
+  
+  
 }
