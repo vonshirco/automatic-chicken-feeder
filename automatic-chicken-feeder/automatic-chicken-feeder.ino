@@ -1,4 +1,4 @@
-//Project Overview
+//Project Overview.
  
 //Definig Libraries
 #include <DS3231.h> //For RTC Module
