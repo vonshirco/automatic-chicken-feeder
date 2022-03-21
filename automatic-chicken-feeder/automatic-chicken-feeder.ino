@@ -53,7 +53,7 @@ void loop() {
     lcd.print("Time: ");
     String t = "";
   
-  t = trc.getTimerStr();
+  t = rtc.getTimerStr();
   t1 = t.charAt(0)-48;
   t2 = t.charAt(1)-48;
   t3 = t.charAt(3)-48;
@@ -66,5 +66,11 @@ void loop() {
   lcd.print("Date: ");
   lcd.print(rtc.getDateStr());
   
+  if (t1==r[0] && t2==r[1] && t3==r[2] && t4==r[3] && t5<1 && t6<3 && feed==true) {
+    servo_test.write(100); //Rotate the servo to the specified angle
+    delay(400);
+    servor_test.write(55);
+    feed=false;
+  }
   
 }
