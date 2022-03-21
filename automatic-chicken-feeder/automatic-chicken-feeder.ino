@@ -29,7 +29,7 @@ LiquidCrystal lcd(A0, A1, A2, 11, 12, 13); //Creates an LC object. Parameters: (
 
 //Declaring the t1 to t6, key, and array r[6], and the feed
 int angle = 0;
-int potentio = A0; // initialize the A0analog pin for potentiometer
+int potentio = A0; // initialize the A0 analog pin for potentiometer
 int t1, t2, t3, t4, t5, t6;
 boolean feed = true; // condition for alarm
   char key;
